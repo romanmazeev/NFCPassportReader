@@ -6,10 +6,6 @@
 
 import Foundation
 
-#if !os(macOS)
-import UIKit
-#endif
-
 @available(iOS 13, macOS 10.15, *)
 public class DataGroup2 : DataGroup {
     public private(set) var nrImages : Int = 0
@@ -37,16 +33,13 @@ public class DataGroup2 : DataGroup {
 
     public override var datagroupType: DataGroupId { .DG2 }
 
-#if !os(macOS)
-func getImage() -> UIImage? {
+    func getImageData() -> Data? {
         if imageData.count == 0 {
             return nil
         }
-        
-        let image = UIImage(data:Data(imageData) )
-        return image
+
+        return Data(imageData)
     }
-#endif
 
     required init( _ data : [UInt8] ) throws {
         try super.init(data)

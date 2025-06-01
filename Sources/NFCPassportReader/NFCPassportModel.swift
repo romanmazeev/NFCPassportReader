@@ -9,11 +9,6 @@
 import Foundation
 import OSLog
 
-#if os(iOS)
-import UIKit
-#endif
-
-
 public enum PassportAuthenticationStatus {
     case notDone
     case success
@@ -153,20 +148,18 @@ public class NFCPassportModel {
             }
         }
     }
-    
-#if os(iOS)
-    public var passportImage : UIImage? {
+
+    public var passportImageData : Data? {
         guard let dg2 = dataGroupsRead[.DG2] as? DataGroup2 else { return nil }
         
-        return dg2.getImage()
+        return dg2.getImageData()
     }
 
-    public var signatureImage : UIImage? {
+    public var signatureImageData : Data? {
         guard let dg7 = dataGroupsRead[.DG7] as? DataGroup7 else { return nil }
         
-        return dg7.getImage()
+        return dg7.getImageData()
     }
-#endif
 
     public var activeAuthenticationSupported : Bool {
         guard let dg15 = dataGroupsRead[.DG15] as? DataGroup15 else { return false }
