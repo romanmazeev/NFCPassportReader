@@ -10,7 +10,7 @@ import OSLog
 import OpenSSL
 import CryptoTokenKit
 
-#if !os(macOS)
+#if canImport(CoreNFC)
 import CoreNFC
 import CryptoKit
 

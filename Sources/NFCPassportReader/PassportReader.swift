@@ -9,7 +9,7 @@
 import Foundation
 import OSLog
 
-#if !os(macOS)
+#if canImport(CoreNFC)
 import UIKit
 import CoreNFC
 

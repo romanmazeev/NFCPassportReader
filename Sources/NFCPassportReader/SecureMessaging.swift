@@ -14,7 +14,7 @@ public enum SecureMessagingSupportedAlgorithms {
     case AES
 }
 
-#if !os(macOS)
+#if canImport(CoreNFC)
 import CoreNFC
 
 
